@@ -22,62 +22,6 @@
 <div class="flex justify-center mt-5">
     <button class=" w-16 h-8 rounded-full text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" onclick="resetGame()">Reset</button>
 </div>
-    <script>
-        const getUserChoice = (userInput) => {
-          
-            if( userInput === 'Rock' || userInput === 'Paper' || userInput === 'Scissors'){
-              return userInput;
-            }
-            else{
-              console.log('Error');
-            }
-            }
-            
-            const getComputerChoice = () => {
-                const randomNumber = Math.floor(Math.random() * 3);
-                switch (randomNumber) {
-                    case 0:
-                        return 'Rock';
-                    case 1:
-                        return 'Paper';
-                    case 2:
-                        return 'Scissors';
-                         default:
-                        return 'Rock';
-            }
-            };
-            
-            const determineWinner = (userChoice,computerChoice) => {
-               if (userChoice === computerChoice) {
-                document.getElementById('winner').innerText =" Tie Game";
-                } else if (
-                    (userChoice === 'Rock' && computerChoice === 'Scissors') ||
-                    (userChoice === 'Paper' && computerChoice === 'Rock') ||
-                    (userChoice === 'Scissors' && computerChoice === 'Paper')
-                ) {
-                    document.getElementById('winner').innerText = "User Won";
-                } else {
-                    document.getElementById('winner').innerText =" Computer Won";
-                }
-               
-            }
-            function playGame(value){
-              var userChoice = getUserChoice(value);
-              var computerChoice = getComputerChoice();
-              document.getElementById('userChoice').innerText = `User's choice: ${userChoice}`;
-              document.getElementById('computerChoice').innerText = `Computer's choice: ${computerChoice}`;
-              
-               determineWinner(userChoice,computerChoice);
-            }
-          
-            function resetGame() {
-          
-            document.getElementById('userChoice').innerText = `User's choice: `;
-            document.getElementById('computerChoice').innerText = `Computer's choice: `;
-            document.getElementById('winner').innerText = `Result : `;
-            
-            }
-          
-    </script>
+    
 </body>
 </html>
