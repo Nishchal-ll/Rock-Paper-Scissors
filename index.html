@@ -1,0 +1,83 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1 class="text-5xl font-bold text-center mt-16 italic">Rock Paper Scissors</h1>
+    <div class="flex flex-col md:flex-row px-16 lg:space-x-5 lg:justify-center mt-16 ">
+        <img class=" cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover: duration-300 " src="./image.png" alt="" onclick="playGame('Paper')" >
+        <img class="cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover: duration-300" src="./image (2).png" alt="" onclick="playGame('Scissors')">
+        <img class="cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover: duration-300" src="./image (1).png" alt="" onclick="playGame('Rock')">
+    </div>
+
+    <div class="result text-2xl font-semibold text-center mt-10">
+        <p  id="userChoice">User's choice: </p>
+        <p  id="computerChoice">Computer's choice: </p>
+        <p  id="winner">Result:</p>
+    </div>
+<div class="flex justify-center mt-5">
+    <button class=" w-16 h-8 rounded-full text-white transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" onclick="resetGame()">Reset</button>
+</div>
+    <script>
+        const getUserChoice = (userInput) => {
+          
+            if( userInput === 'Rock' || userInput === 'Paper' || userInput === 'Scissors'){
+              return userInput;
+            }
+            else{
+              console.log('Error');
+            }
+            }
+            
+            const getComputerChoice = () => {
+                const randomNumber = Math.floor(Math.random() * 3);
+                switch (randomNumber) {
+                    case 0:
+                        return 'Rock';
+                    case 1:
+                        return 'Paper';
+                    case 2:
+                        return 'Scissors';
+                         default:
+                        return 'Rock';
+            }
+            };
+            
+            const determineWinner = (userChoice,computerChoice) => {
+               if (userChoice === computerChoice) {
+                document.getElementById('winner').innerText =" Tie Game";
+                } else if (
+                    (userChoice === 'Rock' && computerChoice === 'Scissors') ||
+                    (userChoice === 'Paper' && computerChoice === 'Rock') ||
+                    (userChoice === 'Scissors' && computerChoice === 'Paper')
+                ) {
+                    document.getElementById('winner').innerText = "User Won";
+                } else {
+                    document.getElementById('winner').innerText =" Computer Won";
+                }
+               
+            }
+            function playGame(value){
+              var userChoice = getUserChoice(value);
+              var computerChoice = getComputerChoice();
+              document.getElementById('userChoice').innerText = `User's choice: ${userChoice}`;
+              document.getElementById('computerChoice').innerText = `Computer's choice: ${computerChoice}`;
+              
+               determineWinner(userChoice,computerChoice);
+            }
+          
+            function resetGame() {
+          
+            document.getElementById('userChoice').innerText = `User's choice: `;
+            document.getElementById('computerChoice').innerText = `Computer's choice: `;
+            document.getElementById('winner').innerText = `Result : `;
+            
+            }
+          
+    </script>
+</body>
+</html>
